@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GenFit - Fixing the 3 Pillars of life.</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+
+  <!-- Header Icon -->
+  <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
+
+  <!-- Style -->
+  <style>
+    .font-plus {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .font-ibm {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body class="font-plus select-none bg-blue-600">
+  <!-- Logged Out View -->
+  <div class="js-logged-out-view w-screen h-screen flex justify-center items-start flex-col overflow-hidden">
+    <div class="btn-area w-full h-2/5 flex justify-end items-center flex-col space-y-10 max-md:h-1/2">
+      <!-- Title -->
+      <h1 class="text-white text-6xl font-plus font-bold text-center max-md:text-5xl">GenFit</h1>
+      <h1 class="text-white text-4xl font-plus font-thin text-center max-md:text-2xl">Fixing the 3 Pillars of life.</h1>
+      <!-- Login & Register -->
+      <div class="btn-container space-x-2">
+        <button id="register"
+          class="font-plus font-semibold text-2xl px-8 py-3 border-white border-4 rounded-full text-white hover:bg-white hover:text-blue-700 max-md:text-xl max-md:px-7 max-md:py-2 duration-200">Join
+          Us</button>
+
+        <button id="login"
+          class="font-plus font-semibold text-2xl px-8 py-3 border-white border-4 rounded-full text-white hover:bg-white hover:text-blue-700 max-md:text-xl max-md:px-7 max-md:py-2 duration-200">Login</button>
+      </div>
+    </div>
+
+    <!-- Pillars of Quality Life -->
+    <div
+      class="pilar-area w-full h-3/5 flex justify-center items-center bg-[url('/assets/pilar-1.png')] bg-cover bg-top hover:bg-[url('/assets/pilar-2.png')] duration-300 max-md:h-1/2 max-md:bg-[url('pilar-2.png')]">
+    </div>
+  </div>
+
+  <!-- Logged In View -->
+  <div class="js-logged-in-view" hidden>
+    <!-- Main Page -->
+
+    <!-- Navigation Bar -->
+    <div
+      class="navbar w-full h-20 bg-transparent flex justify-between items-center flex-row fixed top-0 max-md:justify-center max-md:left-0 border-b">
+      <div
+        class="logo-area w-1/4 h-full bg-white flex justify-center items-center max-md:w-1/2 max-md:justify-start pl-8">
+        <img class="h-5 hover:h-6 duration-200" src="/assets/text-logo.png" alt="">
+      </div>
+      <div
+        class="btn-area w-2/4 h-full bg-white bg-opacity-45 backdrop-blur-sm flex justify-center items-center flex-row space-x-5 max-md:space-x-1 max-md:h-20 max-md:fixed max-md:top-20 max-md:left-0 max-md:w-full max-md:border-b">
+        <button id="home-btn"
+          class="px-4 py-1 bg-blue-600 text-white border-2 border-blue-600 rounded-full font-semibold text-lg max-md:text-sm max-md:px-3">Home</button>
+        <button id="fitness-btn"
+          class="px-4 py-1 bg-white border-2 border-blue-600 text-blue-600 rounded-full font-semibold text-base max-md:text-sm max-md:px-3">Fitness</button>
+        <button id="food-btn"
+          class="px-4 py-1 bg-white border-2 border-blue-600 text-blue-600 rounded-full font-semibold text-base max-md:text-sm max-md:px-3">Healthy
+          Food</button>
+        <button id="consult-btn"
+          class="px-4 py-1 bg-white border-2 border-blue-600 text-blue-600 rounded-full font-semibold text-base max-md:text-sm max-md:px-3">Consult</button>
+      </div>
+      <div class="profile-area logo-area w-1/4 h-full bg-white max-md:w-1/2">
+        <div
+          class="profile-container w-full h-full flex justify-center items-center flex-row space-x-4 max-md:justify-end max-md:pr-8">
+          <div class="js-user-avatar h-full w-auto flex justify-center items-center">
+            <img class="js-user-avatar-picture size-14 object-cover rounded-full"
+              src="/assets/Screenshot 2023-12-05 at 10.33.27.png" alt="">
+          </div>
+          <div class="name-area w-auto h-full flex justify-center items-end flex-col max-md:hidden">
+            <p class="js-user-name font-semibold text-xl"></p>
+            <button id="logout" class="text-red-600">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Home View -->
+    <div id="home-page"
+      class="home bg-[url('/assets/bg-home.png')] bg-cover w-screen h-screen flex justify-center items-center font-plus pt-10 flex-row max-md:flex-col max-md:h-auto max-md:pt-20">
+      <div
+        class="container-img w-1/2 h-full flex justify-center items-center flex-col max-md:space-y-7 max-md:w-full max-md:h-screen">
+        <img class="max-md:w-3/4 w-1/2" src="/assets/img-home.png" alt="">
+        <img class="max-md:w-3/4 w-1/2 hidden max-md:block" src="/assets/img-home-2.png" alt="">
+      </div>
+      <div
+        class="container-percentage w-1/2 h-full flex justify-center items-center max-md:w-full max-md:h-screen bg-slate-100">
+        <div
+          class="percentage w-3/4 h-3/4 bg-white rounded-lg border border-gray-700 flex justify-center items-center flex-col p-14 max-md:p-7 max-md:w-10/12">
+          <div class="title-area w-full h-auto space-y-4">
+            <h1 class="text-4xl font-semibold max-md:text-2xl">Monitor your Daily Nutrition and Fitness</h1>
+            <h1 class="text-lg font-thin max-md:text-base">This will show specifically the growth of your
+              physical changes.</h1>
+          </div>
+          <div class="macros-area w-full h-auto space-y-3 my-5" id="macros-section">
+            <h1 class="text-3xl font-semibold max-md:text-xl">Macros</h1>
+            <div class="percent-area w-full h-auto flex justify-between items-center space-x-1">
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-zinc-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Carbo</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-zinc-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-5xl max-md:text-3xl" id="carbo">0</h1>
+                  <span class="text-3xl text-white max-md:text-xl ml-1">g</span>
+
+                </div>
+              </div>
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-orange-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Fat</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-orange-400 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-5xl max-md:text-3xl" id="fat">0</h1>
+                  <span class="text-3xl text-white max-md:text-xl ml-1">g</span>
+
+                </div>
+              </div>
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-blue-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Protein</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-blue-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-5xl max-md:text-3xl" id="protein">0</h1>
+                  <span class="text-3xl text-white max-md:text-xl ml-1">g</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="macros-area w-full h-auto space-y-3">
+            <h1 class="text-3xl font-semibold max-md:text-xl">Exercise</h1>
+            <div class="percent-area w-full h-auto flex justify-between items-center space-x-1">
+              <div class="carbo-container w-1/2 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-stone-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Exercises</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-stone-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-5xl max-md:text-3xl" id="totalReps">0</h1>
+                  <span class="text-3xl text-white max-md:text-xl ml-1">x</span>
+                </div>
+              </div>
+              <div class="carbo-container w-1/2 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-stone-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold" id="burned-calories">Burned Calories</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-stone-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-5xl max-md:text-3xl" id="burnedCalories">0</h1>
+                  <span class="text-3xl text-white max-md:text-xl ml-1">cal</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="fitness-page"
+      class="fitness w-screen h-auto flex justify-start items-center font-plus py-32 flex-col max-md:pt-48 bg-white hidden">
+
+      <h1 class="text-4xl text-blue-600 font-semibold mb-5">Fitness Exercises</h1>
+
+      <div class="flex w-3/4 h-auto p-4 overflow-x-auto space-x-3 max-md:w-full">
+
+        <!--Item1-->
+        <div class="flex-none w-80 h-auto bg-white flex flex-col justify-start items-center">
+
+          <img id="btn-img1" class="w-full" src="/assets/fitness-items-1.png" alt="">
+
+          <div id="show-div1"
+            class="button-area w-full h-auto p-4 flex flex-col justify-start items-center border hidden duration-200">
+            <form class="w-full h-auto space-y-3" action="">
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <label class="text-xl text-blue-600 font-semibold" for="">Repetition</label>
+                <input class="w-full h-12 rounded-md border-none bg-gray-200" type="number" id="reps">
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <label class="text-xl text-blue-600 font-semibold" for="">Weight</label>
+                <input class="w-full h-12 rounded-md border-none bg-gray-200" type="number" id="weight">
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <button class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md"
+                  id="finishExercise">Finish</button>
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-center flex-col space-y-1">
+                <img id="btn-back1" class="h-4" src="/assets/back-btn.png" alt="">
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <!--Item2-->
+        <div class="flex-none w-80 h-auto bg-white flex flex-col justify-start items-center">
+
+          <img id="btn-img2" class="w-full" src="/assets/fitness-items-2.png" alt="">
+
+          <div id="show-div2"
+            class="button-area w-full h-auto p-4 flex flex-col justify-start items-center border hidden duration-200">
+            <form class="w-full h-auto space-y-3" action="">
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <label class="text-xl text-blue-600 font-semibold" for="">Repetition</label>
+                <input class="w-full h-12 rounded-md border-none bg-gray-200" type="number" id="reps2">
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <label class="text-xl text-blue-600 font-semibold" for="">Weight</label>
+                <input class="w-full h-12 rounded-md border-none bg-gray-200" type="number" id="weight2">
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <button class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md"
+                  id="finishExercise2">Finish</button>
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-center flex-col space-y-1">
+                <img id="btn-back2" class="h-4" src="/assets/back-btn.png" alt="">
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <!--Item3-->
+        <div class="flex-none w-80 h-auto bg-white flex flex-col justify-start items-center">
+
+          <img id="btn-img-3" class="w-full" src="/assets/fitness-items-3.png" alt="">
+
+          <div id="show-div-3"
+            class="button-area w-full h-auto p-4 flex flex-col justify-start items-center border hidden duration-200">
+            <form class="w-full h-auto space-y-3" action="">
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <label class="text-xl text-blue-600 font-semibold" for="">Repetition</label>
+                <input class="w-full h-12 rounded-md border-none bg-gray-200" type="number" id="reps3">
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <label class="text-xl text-blue-600 font-semibold" for="">Weight</label>
+                <input class="w-full h-12 rounded-md border-none bg-gray-200" type="number" id="weight3">
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <button class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md"
+                  id="finishExercise3">Finish</button>
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-center flex-col space-y-1">
+                <img id="btn-back-3" class="h-4" src="/assets/back-btn.png" alt="">
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <!--Item4-->
+        <div class="flex-none w-80 h-auto bg-white flex flex-col justify-start items-center">
+
+          <img id="btn-img4" class="w-full" src="/assets/fitness-items-4.png" alt="">
+
+          <div id="show-div4"
+            class="button-area w-full h-auto p-4 flex flex-col justify-start items-center border hidden duration-200">
+            <form class="w-full h-auto space-y-3" action="">
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <label class="text-xl text-blue-600 font-semibold" for="">Repetition</label>
+                <input class="w-full h-12 rounded-md border-none bg-gray-200" type="number" id="reps4">
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <label class="text-xl text-blue-600 font-semibold" for="">Weight</label>
+                <input class="w-full h-12 rounded-md border-none bg-gray-200" type="number" id="weight4">
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1">
+                <button class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md"
+                  id="finishExercise4">Finish</button>
+              </div>
+              <div class="rep w-full h-auto flex justify-center items-center flex-col space-y-1">
+                <img id="btn-back4" class="h-4" src="/assets/back-btn.png" alt="">
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div
+        class="motivation-container w-3/4 py-28 flex justify-center items-center bg-blue-600 flex-col space-y-3 rounded-lg my-7 max-md:w-5/6 max-md:px-5">
+        <h1 class="text-4xl text-center text-white font-bold max-md:text-xl">Start Training, Not Yapping.</h1>
+        <h1 class="text-lg text-center text-white font-light max-md:text-lg">Change your physique and mental by
+          training day by day</h1>
+      </div>
+
+    </div>
+
+    <div id="food-page"
+      class="food w-screen h-auto flex justify-start items-center font-plus py-32 flex-col max-md:pt-48 hidden bg-white">
+
+      <h1 class="text-4xl text-center text-blue-600 font-semibold mb-5 max-md:text-2xl max-md:mx-4">Healthy Food
+        Recommendation</h1>
+
+      <div class="flex w-3/4 h-auto p-4 overflow-x-auto space-x-3 max-md:w-full">
+
+        <!--Food Items 1-->
+        <div class="flex-none w-80 h-auto bg-white flex flex-col justify-start items-center border rounded-lg">
+          <img class="w-full" src="/assets/food-items-1.png" alt="">
+          <div class="macros-area w-full h-auto space-y-3 my-3 px-3">
+            <h1 class="text-xl font-semibold max-md:text-xl">Nutritions</h1>
+            <div class="percent-area w-full h-auto flex justify-between items-center space-x-1">
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-zinc-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Carbo</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-zinc-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">5<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-orange-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Fat</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-orange-400 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">23<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-blue-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Protein</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-blue-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">16<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1 p-3">
+            <button class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md" id="finishEating">Finish
+              Eat</button>
+          </div>
+        </div>
+
+        <!--Food Items 2-->
+        <div class="flex-none w-80 h-auto bg-white flex flex-col justify-start items-center border rounded-lg">
+          <img class="w-full" src="/assets/food-items-1.png" alt="">
+          <div class="macros-area w-full h-auto space-y-3 my-3 px-3">
+            <h1 class="text-xl font-semibold max-md:text-xl">Nutritions</h1>
+            <div class="percent-area w-full h-auto flex justify-between items-center space-x-1">
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-zinc-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Carbo</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-zinc-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">120<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-orange-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Fat</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-orange-400 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">170<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-blue-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Protein</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-blue-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">10<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1 p-3">
+            <button class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md" id="finishEating2">Finish
+              Eat</button>
+          </div>
+        </div>
+
+        <!--Food Items 3-->
+        <div class="flex-none w-80 h-auto bg-white flex flex-col justify-start items-center border rounded-lg">
+          <img class="w-full" src="/assets/food-items-1.png" alt="">
+          <div class="macros-area w-full h-auto space-y-3 my-3 px-3">
+            <h1 class="text-xl font-semibold max-md:text-xl">Nutritions</h1>
+            <div class="percent-area w-full h-auto flex justify-between items-center space-x-1">
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-zinc-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Carbo</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-zinc-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">120<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-orange-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Fat</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-orange-400 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">170<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-blue-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Protein</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-blue-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">10<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1 p-3">
+            <button class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md" id="finishEating3">Finish
+              Eat</button>
+          </div>
+        </div>
+
+        <!--Food Items 4-->
+        <div class="flex-none w-80 h-auto bg-white flex flex-col justify-start items-center border rounded-lg">
+          <img class="w-full" src="/assets/food-items-1.png" alt="">
+          <div class="macros-area w-full h-auto space-y-3 my-3 px-3">
+            <h1 class="text-xl font-semibold max-md:text-xl">Nutritions</h1>
+            <div class="percent-area w-full h-auto flex justify-between items-center space-x-1">
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-zinc-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Carbo</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-zinc-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">120<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-orange-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Fat</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-orange-400 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">170<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+              <div class="carbo-container w-4/12 h-36 flex justify-center items-center flex-col space-y-1">
+                <div class="title-carbo-area w-full h-11 bg-blue-600 flex justify-center items-center">
+                  <h1 class="text-white font-semibold">Protein</h1>
+                </div>
+                <div class="percent-carbo-area w-full h-28 bg-blue-500 flex justify-center items-center">
+                  <h1 class="text-white font-semibold text-2xl max-md:text-xl">10<span
+                      class="text-xl max-md:text-lg">g</span></h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rep w-full h-auto flex justify-center items-start flex-col space-y-1 p-3">
+            <button class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md" id="finishEating4">Finish
+              Eat</button>
+          </div>
+        </div>
+
+      </div>
+      <div
+        class="motivation-container w-3/4 py-28 flex justify-center items-center bg-blue-600 flex-col space-y-3 rounded-lg my-7 max-md:w-5/6 max-md:px-5">
+        <h1 class="text-4xl text-center text-white font-bold max-md:text-xl">Start Training, Not Yapping.</h1>
+        <h1 class="text-lg text-center text-white font-light max-md:text-lg">Change your physique and mental by
+          training day by day</h1>
+      </div>
+    </div>
+
+    <div id="consult-page"
+      class="food w-screen h-auto flex justify-start items-center font-plus py-32 flex-col max-md:pt-48 hidden bg-white">
+      <div
+        class="motivation-container w-3/4 py-28 flex justify-center items-center bg-blue-600 flex-col space-y-3 rounded-lg my-7 max-md:w-5/6 max-md:px-5">
+        <h1 class="text-4xl text-center text-white font-bold max-md:text-xl">Consult Your Problem, Now or Never.
+        </h1>
+        <h1 class="text-lg text-center text-white font-light max-md:text-lg">by consulting your lifestyle you will
+          have early access to living a longer life</h1>
+      </div>
+      <div
+        class="motivation-container w-3/4 flex justify-start items-center border-y border-r flex-row rounded-xl my-7 max-md:w-5/6 max-md:flex-col max-md:justify-center max-md:items-start max-md:border">
+        <div class="img container w-96 h-full max-md:w-full">
+          <img src="/assets/consult-img.png" alt="">
+        </div>
+        <div class="w-2/3 h-full p-8 flex justify-start items-start flex-col space-y-5 max-md:w-full max-md:p-4">
+          <h1 class="text-xl text-center text-white max-md:text-base px-5 py-2 rounded bg-blue-500">Trusted</h1>
+          <h1 class="text-5xl text-left text-blue-600 font-semibold max-md:text-xl">Professional Consultant</h1>
+          <h1 class="text-xl text-left text-black font-thin max-md:text-sm">Our Consultant will give you the best
+            result in months, will research your daily
+            activities to make your lifestyle flexible and healthy.</h1>
+          <button class="w-full py-4 bg-blue-600 text-white text-2xl font-semibold rounded-md">Call one of Ours</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript Data u/ LocalStorage -->
+    <script>
+      // healthy food eventlistener
+      document.addEventListener('DOMContentLoaded', function () {
+        // Get elements
+        const carboDisplay = document.getElementById('carbo');
+        const fatDisplay = document.getElementById('fat');
+        const proteinDisplay = document.getElementById('protein');
+        const finishEatingBtn = document.getElementById('finishEating');
+        const finishEatingBtn2 = document.getElementById('finishEating2')
+        const finishEatingBtn3 = document.getElementById('finishEating3')
+        const finishEatingBtn4 = document.getElementById('finishEating4')
+
+
+
+        // Initialize data from localStorage or set default values
+        let carbo = parseInt(localStorage.getItem('carbo')) || 0;
+        let fat = parseInt(localStorage.getItem('fat')) || 0;
+        let protein = parseInt(localStorage.getItem('protein')) || 0;
+
+        // Display initial data
+        carboDisplay.textContent = carbo;
+        fatDisplay.textContent = fat;
+        proteinDisplay.textContent = protein;
+
+        // Event listener for finish eating button
+        finishEatingBtn.addEventListener('click', function () {
+          // Add fixed data to macros
+          carbo += 5;
+          fat += 23;
+          protein += 16;
+
+          // Update display
+          carboDisplay.textContent = carbo;
+          fatDisplay.textContent = fat;
+          proteinDisplay.textContent = protein;
+
+          // Store data in localStorage
+          localStorage.setItem('carbo', carbo);
+          localStorage.setItem('fat', fat);
+          localStorage.setItem('protein', protein);
+
+          alert('Data added to Macros')
+        });
+
+        // Event listener for finish eating button
+        finishEatingBtn2.addEventListener('click', function () {
+          // Add fixed data to macros
+          carbo += 25;
+          fat += 0;
+          protein += 1;
+
+          // Update display
+          carboDisplay.textContent = carbo;
+          fatDisplay.textContent = fat;
+          proteinDisplay.textContent = protein;
+
+          // Store data in localStorage
+          localStorage.setItem('carbo', carbo);
+          localStorage.setItem('fat', fat);
+          localStorage.setItem('protein', protein);
+
+          alert('Data added to Macros')
+        });
+
+        // Event listener for finish eating button
+        finishEatingBtn3.addEventListener('click', function () {
+          // Add fixed data to macros
+          carbo += 28;
+          fat += 0;
+          protein += 1;
+
+          // Update display
+          carboDisplay.textContent = carbo;
+          fatDisplay.textContent = fat;
+          proteinDisplay.textContent = protein;
+
+          // Store data in localStorage
+          localStorage.setItem('carbo', carbo);
+          localStorage.setItem('fat', fat);
+          localStorage.setItem('protein', protein);
+
+          alert('Data added to Macros')
+        });
+
+        // Event listener for finish eating button
+        finishEatingBtn4.addEventListener('click', function () {
+          // Add fixed data to macros
+          carbo += 0;
+          fat += 2.7;
+          protein += 2;
+
+          // Update display
+          carboDisplay.textContent = carbo;
+          fatDisplay.textContent = fat;
+          proteinDisplay.textContent = protein;
+
+          // Store data in localStorage
+          localStorage.setItem('carbo', carbo);
+          localStorage.setItem('fat', fat);
+          localStorage.setItem('protein', protein);
+
+          alert('Data added to Macros')
+        });
+      });
+
+      // fitness event listener
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get references to HTML elements
+        const repsInput = document.getElementById("reps");
+        const repsInput2 = document.getElementById("reps2");
+        const repsInput3 = document.getElementById("reps3");
+        const repsInput4 = document.getElementById("reps4");
+        const weightInput = document.getElementById("weight");
+        const weightInput2 = document.getElementById("weight2");
+        const weightInput3 = document.getElementById("weight3");
+        const weightInput4 = document.getElementById("weight4");
+        const totalRepsDisplay = document.getElementById("totalReps");
+        const burnedCaloriesDisplay = document.getElementById("burnedCalories");
+        const finishExerciseButton = document.getElementById("finishExercise");
+        const finishExerciseButton2 = document.getElementById("finishExercise2");
+        const finishExerciseButton3 = document.getElementById("finishExercise3");
+        const finishExerciseButton4 = document.getElementById("finishExercise4");
+
+
+        // Load data from localStorage if available
+        let totalReps = localStorage.getItem("totalReps") || 0;
+        let burnedCalories = localStorage.getItem("burnedCalories") || 0;
+
+        // Display initial data
+        totalRepsDisplay.textContent = totalReps;
+        burnedCaloriesDisplay.textContent = burnedCalories;
+
+        // Event listener for finish exercise button
+        finishExerciseButton.addEventListener("click", function () {
+          // Get input values
+          const reps = parseFloat(repsInput.value) || 0;
+          const weight = parseFloat(weightInput.value) || 0;
+
+          // Calculate burned calories (assuming a constant factor for simplicity)
+          const burnedCalories = reps * weight;
+
+          // Update total reps
+          totalReps += reps;
+
+          // Update total reps and burned calories display
+          totalRepsDisplay.textContent = totalReps;
+          burnedCaloriesDisplay.textContent = burnedCalories;
+
+          // Store data in localStorage
+          localStorage.setItem("totalReps", totalReps);
+          localStorage.setItem("burnedCalories", burnedCalories);
+        });
+
+        // Event listener for finish exercise button
+        finishExerciseButton2.addEventListener("click", function () {
+          // Get input values
+          const reps = parseFloat(repsInput2.value) || 0;
+          const weight = parseFloat(weightInput2.value) || 0;
+
+          // Calculate burned calories (assuming a constant factor for simplicity)
+          const burnedCalories = reps * weight;
+
+          // Update total reps
+          totalReps += reps;
+
+          // Update total reps and burned calories display
+          totalRepsDisplay.textContent = totalReps;
+          burnedCaloriesDisplay.textContent = burnedCalories;
+
+          // Store data in localStorage
+          localStorage.setItem("totalReps", totalReps);
+          localStorage.setItem("burnedCalories", burnedCalories);
+        });
+
+        // Event listener for finish exercise button
+        finishExerciseButton3.addEventListener("click", function () {
+          // Get input values
+          const reps = parseFloat(repsInput3.value) || 0;
+          const weight = parseFloat(weightInput3.value) || 0;
+
+          // Calculate burned calories (assuming a constant factor for simplicity)
+          const burnedCalories = reps * weight;
+
+          // Update total reps
+          totalReps += reps;
+
+          // Update total reps and burned calories display
+          totalRepsDisplay.textContent = totalReps;
+          burnedCaloriesDisplay.textContent = burnedCalories;
+
+          // Store data in localStorage
+          localStorage.setItem("totalReps", totalReps);
+          localStorage.setItem("burnedCalories", burnedCalories);
+        });
+
+        // Event listener for finish exercise button
+        finishExerciseButton4.addEventListener("click", function () {
+          // Get input values
+          const reps = parseFloat(repsInput4.value) || 0;
+          const weight = parseFloat(weightInput4.value) || 0;
+
+          // Calculate burned calories (assuming a constant factor for simplicity)
+          const burnedCalories = reps * weight;
+
+          // Update total reps
+          totalReps += reps;
+
+          // Update total reps and burned calories display
+          totalRepsDisplay.textContent = totalReps;
+          burnedCaloriesDisplay.textContent = burnedCalories;
+
+          // Store data in localStorage
+          localStorage.setItem("totalReps", totalReps);
+          localStorage.setItem("burnedCalories", burnedCalories);
+        });
+      });
+    </script>
+
+    <!-- JavaScript directs -->
+    <script>
+      var btnHome = document.getElementById('home-btn');
+      var btnFitness = document.getElementById('fitness-btn');
+      var btnFood = document.getElementById('food-btn');
+      var btnConsult = document.getElementById('consult-btn');
+      var homePage = document.getElementById('home-page');
+      var fitnessPage = document.getElementById('fitness-page');
+      var foodPage = document.getElementById('food-page');
+      var consultPage = document.getElementById('consult-page');
+
+      var btnImg1 = document.getElementById('btn-img1');
+      var showDiv1 = document.getElementById('show-div1');
+      var btnBack1 = document.getElementById('btn-back1');
+
+      var btnImg2 = document.getElementById('btn-img2');
+      var showDiv2 = document.getElementById('show-div2');
+      var btnBack2 = document.getElementById('btn-back2');
+
+      var btnImg3 = document.getElementById('btn-img-3')
+      var showDiv3 = document.getElementById('show-div-3')
+      var btnBack3 = document.getElementById('btn-back-3')
+
+      var btnImg4 = document.getElementById('btn-img4');
+      var showDiv4 = document.getElementById('show-div4');
+      var btnBack4 = document.getElementById('btn-back4');
+
+      //navbar
+      btnHome.addEventListener('click', function () {
+        foodPage.classList.add('hidden')
+        consultPage.classList.add('hidden');
+        fitnessPage.classList.add('hidden');
+        homePage.classList.remove('hidden');
+
+        btnFitness.classList.replace('bg-blue-600', 'bg-white')
+        btnFitness.classList.replace('text-white', 'text-blue-600')
+
+        btnFood.classList.replace('bg-blue-600', 'bg-white')
+        btnFood.classList.replace('text-white', 'text-blue-600')
+
+        btnConsult.classList.replace('bg-blue-600', 'bg-white')
+        btnConsult.classList.replace('text-white', 'text-blue-600')
+
+        btnHome.classList.replace('bg-white', 'bg-blue-600')
+        btnHome.classList.replace('text-blue-600', 'text-white')
+      })
+
+      btnFitness.addEventListener('click', function () {
+        foodPage.classList.add('hidden')
+        homePage.classList.add('hidden')
+        consultPage.classList.add('hidden');
+        fitnessPage.classList.remove('hidden');
+
+        btnHome.classList.replace('bg-blue-600', 'bg-white')
+        btnHome.classList.replace('text-white', 'text-blue-600')
+
+        btnFood.classList.replace('bg-blue-600', 'bg-white')
+        btnFood.classList.replace('text-white', 'text-blue-600')
+
+        btnConsult.classList.replace('bg-blue-600', 'bg-white')
+        btnConsult.classList.replace('text-white', 'text-blue-600')
+
+        btnFitness.classList.replace('bg-white', 'bg-blue-600')
+        btnFitness.classList.replace('text-blue-600', 'text-white')
+      })
+
+      btnFood.addEventListener('click', function () {
+        fitnessPage.classList.add('hidden')
+        homePage.classList.add('hidden')
+        consultPage.classList.add('hidden');
+        foodPage.classList.remove('hidden');
+
+
+        btnHome.classList.replace('bg-blue-600', 'bg-white')
+        btnHome.classList.replace('text-white', 'text-blue-600')
+
+        btnFitness.classList.replace('bg-blue-600', 'bg-white')
+        btnFitness.classList.replace('text-white', 'text-blue-600')
+
+        btnConsult.classList.replace('bg-blue-600', 'bg-white')
+        btnConsult.classList.replace('text-white', 'text-blue-600')
+
+        btnFood.classList.replace('bg-white', 'bg-blue-600')
+        btnFood.classList.replace('text-blue-600', 'text-white')
+      })
+
+      btnConsult.addEventListener('click', function () {
+        fitnessPage.classList.add('hidden')
+        foodPage.classList.add('hidden')
+        homePage.classList.add('hidden');
+        consultPage.classList.remove('hidden');
+
+        btnHome.classList.replace('bg-blue-600', 'bg-white')
+        btnHome.classList.replace('text-white', 'text-blue-600')
+
+        btnFitness.classList.replace('bg-blue-600', 'bg-white')
+        btnFitness.classList.replace('text-white', 'text-blue-600')
+
+        btnFood.classList.replace('bg-blue-600', 'bg-white')
+        btnFood.classList.replace('text-white', 'text-blue-600')
+
+        btnConsult.classList.replace('bg-white', 'bg-blue-600')
+        btnConsult.classList.replace('text-blue-600', 'text-white')
+      })
+
+      //show
+      btnImg1.addEventListener('click', function () {
+        showDiv1.classList.remove('hidden')
+      });
+
+      btnImg2.addEventListener('click', function () {
+        showDiv2.classList.remove('hidden')
+      });
+
+      btnImg3.addEventListener('click', function () {
+        showDiv3.classList.remove('hidden')
+      });
+
+      btnImg4.addEventListener('click', function () {
+        showDiv4.classList.remove('hidden')
+      });
+
+      //hide
+      btnBack1.addEventListener('click', function () {
+        showDiv1.classList.add('hidden')
+      });
+
+      btnBack2.addEventListener('click', function () {
+        showDiv2.classList.add('hidden')
+      });
+
+      btnBack3.addEventListener('click', function () {
+        showDiv3.classList.add('hidden')
+      });
+
+      btnBack4.addEventListener('click', function () {
+        showDiv4.classList.add('hidden')
+      });
+    </script>
+
+    <!-- Typescript Connector -->
+    <script type="module" src="/src/auth.ts"></script>
+</body>
+
+</html>
